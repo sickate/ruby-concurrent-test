@@ -1,4 +1,3 @@
-
 #!/usr/bin/env ruby
 require 'celluloid'
 require "celluloid/autostart"

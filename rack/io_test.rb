@@ -18,7 +18,7 @@ class IoTest
     #sql_test
 
     # test with sleep
-    sleep_test
+    sleep_test 0.01
 
     # test with external website
     #url_test

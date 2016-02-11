@@ -1,0 +1,19 @@
+GEM
+  remote: https://ruby.taobao.org/
+  specs:
+    eventmachine (1.0.9.1)
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
+    systemu (2.6.5)
+    uuid (2.3.8)
+      macaddr (~> 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  eventmachine
+  uuid
+
+BUNDLED WITH
+   1.11.2
