@@ -1,0 +1,13 @@
+source 'https://ruby.taobao.org'
+
+gem 'reel', '~> 0.6.0.pre5'
+#gem 'reel', git: 'https://github.com/celluloid/reel.git', branch: '0.6.5-release'
+gem 'reel-rack'
+#gem 'celluloid-supervision', '~> 0.20.5'
+gem 'activerecord'
+
+gem 'puma'
+gem 'thin'
+
+gem 'pg'
+gem 'httparty'

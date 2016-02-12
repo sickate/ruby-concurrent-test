@@ -4,27 +4,14 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup(:default)
 
-require 'io_test'
-require 'lobster'
-require 'yaml'
+require 'grape'
+require 'server'
 require 'active_record'
+require 'models/post'
 
 config = YAML.load_file('database.yml')
 ActiveRecord::Base.establish_connection(config)
 
 use ::Rack::ShowExceptions
 
-app = Rack::Builder.app do
-  # test CPU heavy action
-  map '/zlib' do
-    run Lobster.new
-  end
-
-  # test IO heavy action
-  map '/io' do
-    run IoTest.new
-  end
-end
-
-run app
-
+run Server::API

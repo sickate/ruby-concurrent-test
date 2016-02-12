@@ -1,0 +1,14 @@
+source 'https://ruby.taobao.org'
+
+gem 'puma'
+gem 'rack'
+gem 'activerecord'
+gem 'pg'
+gem 'httparty'
+gem 'grape'
+
+
+# remove following gems when you are using rbx
+# for some reason these gems can't be installed
+gem 'byebug'
+gem 'thin'
