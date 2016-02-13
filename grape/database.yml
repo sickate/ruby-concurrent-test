@@ -1,5 +1,5 @@
 adapter: postgresql
-pool: 100
+pool: 400
 timeout: 5000
 encoding: utf8
 database: concurrent_dev

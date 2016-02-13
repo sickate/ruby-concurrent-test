@@ -21,11 +21,36 @@ module Server
       "I slept for #{sec} sec."
     end
 
-    desc 'Return a public timeline.'
+
+    desc ' db.'
+    get :sql_sleep do
+      t0 = Time.now
+      sec = 0.2
+      sql = "select pg_sleep(#{sec})"
+      ActiveRecord::Base.connection.execute(sql)
+      t1 = Time.now
+
+      puts "SQL_SLEEP Start at #{t0}, cost #{t1 - t0} seconds!"
+      if t1 - t0 > 3
+        puts "SLEEP SLOWREQUEST}"
+      elsif t1 - t0 < 0.02
+        puts "SLEEP FASTREQUEST"
+      end
+      "I slept for #{sec} sec."
+    end
+
+    desc 'Test db.'
     get :sql do
+      t0 = Time.now
       post = Post.create(title: "I dream of #{rand(10000)} elephants.",
                          content: 'lalallalallallal')
-      puts post.id
+      t1 = Time.now
+      puts "Start at #{t0}, cost #{t1 - t0} seconds! Object id is: #{post.id}..."
+      if t1 - t0 > 3
+        puts "SQL SLOWREQUEST #{}"
+      elsif t1 - t0 < 0.02
+        puts "SQL FASTREQUEST"
+      end
       "Post created! Content: #{post.to_json}."
     end
   end
