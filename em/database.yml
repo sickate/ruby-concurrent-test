@@ -1,0 +1,6 @@
+adapter: postgresql
+pool: 400
+timeout: 5000
+encoding: utf8
+database: concurrent_dev
+host: xingbei

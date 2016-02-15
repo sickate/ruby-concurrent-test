@@ -8,38 +8,28 @@ require 'cramp'
 
 require 'yaml'
 require 'active_record'
+require 'models/post'
 
 require 'hello'
 require 'sleep'
 require 'sql_sleep'
 require 'sql_insert'
 require 'sql_select'
+require 'http_router'
 
 config = YAML.load_file('database.yml')
 ActiveRecord::Base.establish_connection(config)
 
-
-
-app = Rack::Builder.app do
+routes = HttpRouter.new do
   # test CPU heavy action
-  map '/hello' do
-    run WelcomeController
-  end
-
-  # test IO heavy action
-  map '/sleep' do
-    run Sleep.new
-  end
-  map '/sql_sleep' do
-    run SqlSleep.new
-  end
-  map '/sql_insert' do
-    run SqlInsert.new
-  end
-  map '/sql_select' do
-    run SqlSelect.new
-  end
+  add('/hello').to(WelcomeController)
+  add('/sleep').to(Sleep)
+  add('/sql_insert').to(SqlInsert)
+  add('/sql_sleep').to(SqlSleep)
+  add('/sql_select').to(SqlSelect)
 end
+
+Rack::Handler::Thin.run routes, :Port => 3000
 
 
 

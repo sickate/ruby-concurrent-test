@@ -1,4 +1,4 @@
-class SqlInsert < Cramp::Action
+class SqlSelect < Cramp::Action
   def start
     t0 = Time.now
 
